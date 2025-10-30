@@ -2,6 +2,8 @@ import math
 from scipy.optimize import minimize_scalar
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+
 
 def main():
     np.random.seed(42)
@@ -15,7 +17,7 @@ def main():
 
     print(f"Используем параметры: a={a:.4f}, b={b:.4f}, m={m}, n={n}, beta={beta:.4f}")
 
-    eps = 1e-5
+    eps = 1e-4
     kmax = 10000
     d = math.sqrt(a**2 + b**2)
     alpha = math.sqrt(1 - beta**2)
@@ -25,7 +27,7 @@ def main():
     xs = [x]
     ys = [y]
     qs = []
-
+    start_time = time.time()
     for k in range(1, kmax + 1):
         x_prev, y_prev = x, y
         
@@ -53,8 +55,11 @@ def main():
         if k == kmax:
             print("Достигнут kmax")
             break
+    end_time = time.time()
+
+    elapsed_time =  end_time - start_time
     
-    print(f"Всего итераций k={k}")
+    print(f"Всего итераций k={k}, выполнено за {elapsed_time} сек")
     print(f"x_min={x:.8f}")
     print(f"y_min={y:.8f}")
     print(f"Значение функции f(x,y): {fxy(alpha, beta, a, b, x, y, m, n):.8f}")
