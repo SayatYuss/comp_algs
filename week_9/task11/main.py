@@ -86,7 +86,7 @@ def plot_results(a, b, m, n, alpha, beta, d, x_history, y_history, q_history, k_
 
     # --- 2. Создание окна с 4 графиками ---
     fig = plt.figure(figsize=(14, 12))
-    fig.suptitle(f"Метод координатного спуска (a={a}, b={b}, β={beta}, m={m}, n={n})", fontsize=16)
+    fig.suptitle(f"Метод координатного спуска (a={a:.4f}, b={b:.4f}, β={beta:.4f}, m={m}, n={n})", fontsize=16)
 
     # [cite_start]--- График 1: 3D-поверхность функции f(x,y) [cite: 31] ---
     ax1 = fig.add_subplot(2, 2, 1, projection='3d')
